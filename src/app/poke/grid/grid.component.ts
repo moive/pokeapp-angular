@@ -7,9 +7,11 @@ import { PokeService } from 'src/app/services/poke.service';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent {
+  pokeList = [];
   constructor(private pokeService: PokeService) {
     pokeService.getList().subscribe((data: any) => {
-      console.log(data);
+      this.pokeList = data.results;
+      console.log(this.pokeList);
     });
   }
 }

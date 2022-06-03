@@ -1,10 +1,6 @@
 <app-navbar></app-navbar>
-<mat-grid-list cols="5" rowHeight="400" gutterSize="10">
-  <mat-grid-tile>
-    <app-card></app-card>
+<mat-grid-list cols="5" rowHeight="400" gutterSize="20">
+  <mat-grid-tile *ngFor="let item of pokeList">
+    <app-card [item]="item"></app-card>
   </mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-  <mat-grid-tile>5</mat-grid-tile>
 </mat-grid-list>

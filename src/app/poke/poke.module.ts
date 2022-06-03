@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { GridComponent } from './grid/grid.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -11,7 +12,13 @@ import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [GridComponent, NavbarComponent, CardComponent],
-  imports: [CommonModule, MatToolbarModule, MatGridListModule, MatCardModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatGridListModule,
+    MatCardModule,
+  ],
   exports: [GridComponent],
 })
 export class PokeModule {}

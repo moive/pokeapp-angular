@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { PokeService } from 'src/app/services/poke.service';
 
 @Component({
   selector: 'app-grid',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+  styleUrls: ['./grid.component.scss'],
 })
-export class GridComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class GridComponent {
+  constructor(private pokeService: PokeService) {
+    pokeService.getList().subscribe((data: any) => {
+      console.log(data);
+    });
   }
-
 }

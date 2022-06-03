@@ -11,7 +11,6 @@ export class GridComponent {
   constructor(private pokeService: PokeService) {
     pokeService.getList().subscribe((data: any) => {
       this.pokeList = data.results;
-      console.log(this.pokeList);
     });
   }
 }

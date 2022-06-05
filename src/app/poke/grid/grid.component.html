@@ -5,10 +5,20 @@
   </article>
 </div>
 <div class="pagination-buttons">
-  <button mat-mini-fab color="primary">
+  <button
+    (click)="prevPage()"
+    [disabled]="isDisabledPrev()"
+    mat-mini-fab
+    color="primary"
+  >
     <mat-icon>chevron_left</mat-icon>
   </button>
-  <button mat-mini-fab color="primary">
+  <button
+    (click)="nextPage()"
+    [disabled]="this.isDisabledNext()"
+    mat-mini-fab
+    color="primary"
+  >
     <mat-icon>chevron_right</mat-icon>
   </button>
 </div>

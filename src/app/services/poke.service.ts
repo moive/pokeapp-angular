@@ -12,7 +12,7 @@ export class PokeService {
     return this.http.get(`${this.baseUrl}/pokemon/`, {
       params: {
         offset: page,
-        limit: 8,
+        limit: 10,
       },
     });
   }

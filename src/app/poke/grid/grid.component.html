@@ -1,6 +1,14 @@
 <app-navbar></app-navbar>
-<mat-grid-list cols="5" rowHeight="400" gutterSize="20">
-  <mat-grid-tile *ngFor="let item of pokeList">
+<div class="wrap-card">
+  <article *ngFor="let item of pokeList">
     <app-card [item]="item"></app-card>
-  </mat-grid-tile>
-</mat-grid-list>
+  </article>
+</div>
+<div class="pagination-buttons">
+  <button mat-mini-fab color="primary">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <button mat-mini-fab color="primary">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>

@@ -12,8 +12,12 @@ export class PokeService {
 
   constructor(private http: HttpClient) {}
 
+  get url() {
+    return this.baseUrl + '/pokemon/';
+  }
+
   getList(page: number = this.pageOffset, limit: number = this.pageLimit) {
-    return this.http.get(`${this.baseUrl}/pokemon/`, {
+    return this.http.get(this.url, {
       params: {
         offset: page,
         limit,
@@ -22,6 +26,6 @@ export class PokeService {
   }
 
   getPokeData(name: string) {
-    return this.http.get(`${this.baseUrl}/pokemon/${name}`);
+    return this.http.get(`${this.url}${name}`);
   }
 }

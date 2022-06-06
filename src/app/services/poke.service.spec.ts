@@ -21,24 +21,26 @@ describe('PokeService', () => {
     service = TestBed.inject(PokeService);
   });
 
+  afterEach(() => {
+    httpClient.verify();
+  });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
   it('should make a http request', (done: DoneFn) => {
-    service.getList().subscribe((data) => {
-      console.log(data);
+    const url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10';
 
-      expect(1).toBe(1);
-
+    service.getList().subscribe(() => {
       done();
     });
 
-    const req: TestRequest = httpClient.expectOne(
-      'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10'
-    );
+    const req: TestRequest = httpClient.expectOne(url);
 
     expect(req.request.url).toEqual(service.url);
+    expect(req.request.urlWithParams).toEqual(url);
+    expect(req.request.method).toEqual('GET');
 
     req.flush(pokeListMock);
 

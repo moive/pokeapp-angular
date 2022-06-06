@@ -8,7 +8,7 @@ import { PokeService } from 'src/app/services/poke.service';
 })
 export class CardComponent implements OnInit {
   @Input()
-  item: any;
+  item: any = { name: '' };
 
   urlImgSmall: string = '';
   urlImgLarge: string = '';

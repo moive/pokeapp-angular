@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PokeData } from '../poke/interfaces/pokeData.interface';
+import { PokeList } from '../poke/interfaces/pokeList.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,7 @@ export class PokeService {
   }
 
   getList(page: number = this.pageOffset, limit: number = this.pageLimit) {
-    return this.http.get(this.url, {
+    return this.http.get<PokeList>(this.url, {
       params: {
         offset: page,
         limit,
@@ -26,6 +28,6 @@ export class PokeService {
   }
 
   getPokeData(name: string) {
-    return this.http.get(`${this.url}${name}`);
+    return this.http.get<PokeData>(`${this.url}${name}`);
   }
 }

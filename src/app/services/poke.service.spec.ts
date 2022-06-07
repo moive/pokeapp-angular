@@ -4,7 +4,9 @@ import {
   TestRequest,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { PokeList } from '../poke/interfaces/pokeList.interface';
 import { pokeListMock } from '../__mocks__/pockeList.mock';
+import { pokeDataMock } from '../__mocks__/pokeData.mock';
 
 import { PokeService } from './poke.service';
 
@@ -48,7 +50,7 @@ describe('PokeService', () => {
   it('should return a list of pokemons', (done: DoneFn) => {
     const url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10';
 
-    service.getList().subscribe((data: any) => {
+    service.getList().subscribe((data) => {
       expect(data).toEqual(pokeListMock);
       expect(data.results.length).toBe(8);
 
@@ -56,5 +58,17 @@ describe('PokeService', () => {
     });
 
     httpClient.expectOne(url).flush(pokeListMock);
+  });
+
+  it('should return the picture url', (done: DoneFn) => {
+    const url = 'https://pokeapi.co/api/v2/pokemon/1';
+
+    service.getPokeData('1').subscribe((data) => {
+      expect(data).toEqual(pokeDataMock);
+
+      done();
+    });
+
+    httpClient.expectOne(url).flush(pokeDataMock);
   });
 });

@@ -1,4 +1,6 @@
-export const pokeListMock = {
+import { PokeList } from '../poke/interfaces/pokeList.interface';
+
+export const pokeListMock: PokeList = {
   count: 1118,
   next: 'https://pokeapi.co/api/v2/pokemon/?offset=10&limit=10',
   previous: null,
